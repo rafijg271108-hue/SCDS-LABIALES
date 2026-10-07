@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCDS LABIALES - Colección de Larga Duración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              rose: '#D88A8A',
+              plum: '#522128',
+              deepCherry: '#3B1822',
+              berry: '#8C3247',
+              terracotta: '#A65548',
+              nude: '#B87265',
+              cream: '#FAECEB',
+              softBg: '#FDF7F7'
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            handwritten: ['Great Vibes', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+    }
+    .text-stroke {
+      -webkit-text-stroke: 1px #522128;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FAECEB;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D88A8A;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-brand-softBg text-slate-800 font-sans antialiased selection:bg-brand-rose selection:text-white">
+
+  <!-- TOP BANNER -->
+  <div class="bg-brand-plum text-brand-cream text-xs font-medium py-2 text-center tracking-wider uppercase px-4 flex justify-center items-center gap-2">
+    <span>✨ ENVÍO GRATIS EN LA COMPRA DE 2 O MÁS LABIALES ✨</span>
+    <span class="hidden md:inline">| CODIGO: SCDSBEAUTY</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-40 glass-effect border-b border-brand-rose/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="logo.jpeg" id="navLogo" onerror="this.src='https://via.placeholder.com/60?text=SCDS'" alt="SCDS LABIALES Logo" class="h-12 w-12 rounded-full object-cover border-2 border-brand-rose shadow-sm group-hover:scale-105 transition-transform">
+        <div>
+          <span class="font-serif text-2xl font-bold tracking-wider text-brand-plum block leading-none">SCDS</span>
+          <span class="text-[10px] tracking-[0.2em] text-brand-berry font-semibold uppercase">LABIALES</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
+        <a href="#catalogo" class="hover:text-brand-berry transition-colors">Colección</a>
+        <a href="#tonos" class="hover:text-brand-berry transition-colors">Tonos Exclusivos</a>
+        <a href="#formula" class="hover:text-brand-berry transition-colors">Fórmula y Cuidado</a>
+        <a href="#ingredientes" class="hover:text-brand-berry transition-colors">Ingredientes</a>
+      </div>
+
+      <button id="cartBtn" onclick="toggleCart()" class="relative p-2.5 bg-brand-cream hover:bg-brand-rose/20 text-brand-plum rounded-full transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span id="cartBadge" class="absolute -top-1 -right-1 bg-brand-berry text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="relative overflow-hidden py-12 lg:py-20 bg-gradient-to-b from-brand-cream/60 to-brand-softBg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-rose/20 text-brand-plum text-xs font-semibold tracking-wide uppercase">
+            <span>💄 Colección Pro Matte</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-brand-plum leading-tight">
+            Color que resalta <br><span class="font-handwritten text-brand-berry text-5xl sm:text-6xl lg:text-7xl capitalize font-normal">tu esencia</span>
+          </h1>
+          <p class="text-slate-6xl text-slate-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light">
+            Labiales de larga duración con fórmula hidratante, alta pigmentación y textura suave para lucir unos labios hermosos y protegidos todo el día.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white px-3 py-2 rounded-lg border border-brand-rose/20 shadow-sm">
+              <span class="text-emerald-500">✓</span> Libre de Parabenos
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white px-3 py-2 rounded-lg border border-brand-rose/20 shadow-sm">
+              <span class="text-emerald-500">✓</span> Cruelty Free
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white px-3 py-2 rounded-lg border border-brand-rose/20 shadow-sm">
+              <span class="text-emerald-500">✓</span> Hecho en México
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <a href="#catalogo" class="bg-brand-plum hover:bg-brand-deepCherry text-white font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
+              <span>Elegir mis tonos</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="absolute -inset-4 bg-gradient-to-r from-brand-rose/30 to-brand-cream/50 rounded-3xl transform rotate-2 blur-lg"></div>
+            <img id="heroImage" src="presentacion.jpeg" onerror="this.src='https://via.placeholder.com/600x600?text=SCDS+Labiales'" alt="SCDS Labiales Presentación" class="relative rounded-2xl shadow-2xl w-full object-cover border-4 border-white aspect-square">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MOSTRADOR DE 4 TONOS INTERACTIVO -->
+  <section id="tonos" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-serif font-bold text-brand-plum">Descubre tu Tono Perfecto</h2>
+        <p class="text-slate-500 mt-2 text-sm">Formulados con pigmentación intensa de larga duración. Haz clic en un tono para ver el detalle.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- TONO 1: Sangría -->
+        <div class="bg-brand-softBg rounded-2xl p-5 border border-brand-rose/20 text-center hover:shadow-lg transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-full mx-auto mb-3 shadow-md border-2 border-white" style="background-color: #3B1822;"></div>
+            <span class="text-xs font-bold text-brand-berry uppercase tracking-wider">Tono Oscuro Intenso</span>
+            <h3 class="text-xl font-serif font-bold text-brand-plum mt-1">1. Sangría</h3>
+            <p class="text-xs text-slate-500 mt-2">Un tono borgoña profundo y seductor para noches especiales y looks dramáticos.</p>
+          </div>
+          <button onclick="quickAddToCart('Sangría', '#3B1822')" class="mt-5 w-full py-2.5 px-4 bg-brand-cream hover:bg-brand-plum hover:text-white text-brand-plum text-xs font-bold rounded-xl transition-colors">
+            Añadir Sangría - $199
+          </button>
+        </div>
+
+        <!-- TONO 2: Black Cherry -->
+        <div class="bg-brand-softBg rounded-2xl p-5 border border-brand-rose/20 text-center hover:shadow-lg transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-full mx-auto mb-3 shadow-md border-2 border-white" style="background-color: #522128;"></div>
+            <span class="text-xs font-bold text-brand-berry uppercase tracking-wider">Tono Vamp / Elegante</span>
+            <h3 class="text-xl font-serif font-bold text-brand-plum mt-1">2. Black Cherry</h3>
+            <p class="text-xs text-slate-500 mt-2">Cereza oscuro sofisticado que aporta carácter, misterio y alta elegancia.</p>
+          </div>
+          <button onclick="quickAddToCart('Black Cherry', '#522128')" class="mt-5 w-full py-2.5 px-4 bg-brand-cream hover:bg-brand-plum hover:text-white text-brand-plum text-xs font-bold rounded-xl transition-colors">
+            Añadir Black Cherry - $199
+          </button>
+        </div>
+
+        <!-- TONO 3: Hazelnut -->
+        <div class="bg-brand-softBg rounded-2xl p-5 border border-brand-rose/20 text-center hover:shadow-lg transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-full mx-auto mb-3 shadow-md border-2 border-white" style="background-color: #A65548;"></div>
+            <span class="text-xs font-bold text-brand-berry uppercase tracking-wider">Tono Terracota / Naranjita</span>
+            <h3 class="text-xl font-serif font-bold text-brand-plum mt-1">3. Hazelnut</h3>
+            <p class="text-xs text-slate-500 mt-2">Cálido nude avellana de subtono cálido ideal para un look natural e iluminado diario.</p>
+          </div>
+          <button onclick="quickAddToCart('Hazelnut', '#A65548')" class="mt-5 w-full py-2.5 px-4 bg-brand-cream hover:bg-brand-plum hover:text-white text-brand-plum text-xs font-bold rounded-xl transition-colors">
+            Añadir Hazelnut - $199
+          </button>
+        </div>
+
+        <!-- TONO 4: Temptress -->
+        <div class="bg-brand-softBg rounded-2xl p-5 border border-brand-rose/20 text-center hover:shadow-lg transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-full mx-auto mb-3 shadow-md border-2 border-white" style="background-color: #8C3247;"></div>
+            <span class="text-xs font-bold text-brand-berry uppercase tracking-wider">Tono Rosado Malva</span>
+            <h3 class="text-xl font-serif font-bold text-brand-plum mt-1">4. Temptress</h3>
+            <p class="text-xs text-slate-500 mt-2">Un rosa romántico versátil y vibrante que realza de inmediato el tono natural de tus labios.</p>
+          </div>
+          <button onclick="quickAddToCart('Temptress', '#8C3247')" class="mt-5 w-full py-2.5 px-4 bg-brand-cream hover:bg-brand-plum hover:text-white text-brand-plum text-xs font-bold rounded-xl transition-colors">
+            Añadir Temptress - $199
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE IMÁGENES REALES DEL PRODUCTO -->
+  <section id="catalogo" class="py-16 bg-brand-cream/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl font-serif font-bold text-brand-plum">Imágenes Oficiales de la Colección</h2>
+        <p class="text-slate-600 text-sm mt-2">Garantía total de pigmentación, acabado suave y empaque institucional.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-3 rounded-2xl shadow-md border border-brand-rose/20 overflow-hidden group">
+          <img src="presentacion.jpeg" alt="Presentación General" class="w-full h-80 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+          <p class="text-center text-xs font-semibold text-brand-plum mt-3">Colección Completa SCDS</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl shadow-md border border-brand-rose/20 overflow-hidden group">
+          <img src="tonos.jpeg" alt="Muestras de Tonos" class="w-full h-80 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+          <p class="text-center text-xs font-semibold text-brand-plum mt-3">Muestra Swatch de los 4 Tonos</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl shadow-md border border-brand-rose/20 overflow-hidden group">
+          <img src="empaque.jpeg" alt="Empaque SCDS" class="w-full h-80 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+          <p class="text-center text-xs font-semibold text-brand-plum mt-3">Detalle de Empaque e Ingredientes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULA & INGREDIENTES -->
+  <section id="formula" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <img src="empaque.jpeg" alt="Detalle Caja SCDS" class="rounded-2xl shadow-xl border border-brand-rose/20 w-full max-w-lg mx-auto">
+        </div>
+        <div class="space-y-6">
+          <span class="text-xs font-bold text-brand-berry uppercase tracking-wider">Cuidado & Confianza</span>
+          <h2 class="text-3xl font-serif font-bold text-brand-plum">Fórmula Creada para Proteger tus Labios</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Nuestros labiales combinan la máxima durabilidad de pigmento con emolientes naturales que previenen la resequedad.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-3 rounded-xl bg-brand-softBg">
+              <div class="p-2 bg-brand-rose/20 rounded-lg text-brand-plum font-bold">✨</div>
+              <div>
+                <h4 class="font-bold text-sm text-brand-plum">Modo de Uso Recomendado</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Aplica directamente sobre los labios limpios y desliza suavemente desde el centro hacia las comisuras hasta obtener la intensidad deseada.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-3 rounded-xl bg-brand-softBg" id="ingredientes">
+              <div class="p-2 bg-brand-rose/20 rounded-lg text-brand-plum font-bold">🌿</div>
+              <div>
+                <h4 class="font-bold text-sm text-brand-plum">Ingredientes Destacados</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Ricinus Communis Seed Oil, Cera Alba, Cera Carnauba, Mica, Titanium Dioxide, Iron Oxides, Tocopherol (Vitamina E), Flavor.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dashed border-brand-rose text-center bg-brand-cream/30">
+            <p class="text-xs font-semibold text-brand-plum">📍 SCDS Cosmetics S.A. de C.V.</p>
+            <p class="text-[11px] text-slate-500">Av. Primero de Mayo, Col. Centro, C.P. 86000. Villahermosa, Tabasco. Hecho en México 🇲🇽</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTÓN FLOTANTE O COMPRA RÁPIDA -->
+  <div class="fixed bottom-6 right-6 z-30">
+    <button onclick="toggleCart()" class="bg-brand-plum hover:bg-brand-deepCherry text-white px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-3 font-semibold text-sm transition-transform hover:scale-105">
+      <span>🛒 Ver Carrito</span>
+      <span id="floatingCartBadge" class="bg-brand-rose text-brand-plum text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+    </button>
+  </div>
+
+  <!-- DRAWER CARRITO / SIMULADOR DE COMPRA -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onclick="toggleCart()"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+        
+        <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-brand-softBg">
+          <h2 class="text-xl font-serif font-bold text-brand-plum">Mi Pedido SCDS</h2>
+          <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600">✕</button>
+        </div>
+
+        <div id="cartItemsContainer" class="p-6 overflow-y-auto flex-1 space-y-4 custom-scrollbar">
+          <p class="text-center text-slate-400 text-sm py-12">Tu carrito está vacío.<br>¡Añade tus tonos favoritos!</p>
+        </div>
+
+        <div class="p-6 border-t border-slate-100 bg-brand-softBg space-y-4">
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Subtotal:</span>
+            <span id="cartSubtotal" class="font-bold text-slate-800">$0.00 MXN</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-500">Envío:</span>
+            <span id="cartShipping" class="font-bold text-emerald-600">Gratis ($0.00)</span>
+          </div>
+          <div class="flex justify-between text-base border-t border-slate-200 pt-2 font-bold text-brand-plum">
+            <span>Total:</span>
+            <span id="cartTotal">$0.00 MXN</span>
+          </div>
+
+          <button onclick="openCheckoutModal()" id="checkoutBtn" disabled class="w-full py-3.5 bg-brand-plum disabled:bg-slate-300 text-white font-semibold rounded-xl text-sm shadow-md transition-colors">
+            Simular Compra
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE SIMULACIÓN DE CHECKOUT -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">✕</button>
+
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-serif font-bold text-brand-plum">Simulación de Pago</h3>
+        <p class="text-xs text-slate-500">Completa los datos ficticios para realizar el pedido de demostración.</p>
+      </div>
+
+      <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo</label>
+          <input type="text" required placeholder="Ej. Maria Garcia" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-rose">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Dirección de Envío</label>
+          <input type="text" required placeholder="Calle, número, colonia, Villahermosa, Tabasco" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-rose">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Teléfono</label>
+            <input type="tel" required placeholder="993 000 0000" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-rose">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Método de Pago</label>
+            <select class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-brand-rose">
+              <option>Tarjeta de Crédito / Débito (Demo)</option>
+              <option>Transferencia SPEI</option>
+              <option>Pago OXXO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-3 bg-brand-cream/50 rounded-lg text-xs space-y-1">
+          <div class="flex justify-between font-bold text-brand-plum">
+            <span>Total a pagar:</span>
+            <span id="modalTotal">$0.00 MXN</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition-colors shadow-lg">
+          ✓ Confirmar Pedido de Prueba
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT INTERACTIVO -->
+  <script>
+    let cart = [];
+    const PRICE = 199;
+
+    function quickAddToCart(name, colorHex) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, colorHex, quantity: 1, price: PRICE });
+      }
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function changeQuantity(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (item) {
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+          cart = cart.filter(i => i.name !== name);
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((acc, i) => acc + i.quantity, 0);
+      const subtotal = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+      
+      document.getElementById('cartBadge').innerText = totalItems;
+      document.getElementById('floatingCartBadge').innerText = totalItems;
+      
+      const container = document.getElementById('cartItemsContainer');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-center text-slate-400 text-sm py-12">Tu carrito está vacío.<br>¡Añade tus tonos favoritos!</p>';
+        checkoutBtn.disabled = true;
+      } else {
+        checkoutBtn.disabled = false;
+        container.innerHTML = cart.map(item => `
+          <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-slate-100 shadow-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full border border-slate-200" style="background-color: ${item.colorHex}"></div>
+              <div>
+                <h4 class="font-bold text-sm text-brand-plum">${item.name}</h4>
+                <p class="text-xs text-slate-400">$${item.price} MXN c/u</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeQuantity('${item.name}', -1)" class="w-6 h-6 bg-slate-100 rounded-full text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200">-</button>
+              <span class="text-xs font-bold text-slate-700">${item.quantity}</span>
+              <button onclick="changeQuantity('${item.name}', 1)" class="w-6 h-6 bg-slate-100 rounded-full text-slate-600 font-bold flex items-center justify-center hover:bg-slate-200">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)} MXN`;
+      document.getElementById('cartTotal').innerText = `$${subtotal.toFixed(2)} MXN`;
+      document.getElementById('modalTotal').innerText = `$${subtotal.toFixed(2)} MXN`;
+    }
+
+    function toggleCart(forceOpen = false) {
+      const drawer = document.getElementById('cartDrawer');
+      if (forceOpen || drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function openCheckoutModal() {
+      toggleCart(false);
+      document.getElementById('checkoutModal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      alert('🎉 ¡Pedido recibido con éxito! Esta es una simulación de compra para SCDS LABIALES.');
+      cart = [];
+      updateCartUI();
+      closeCheckoutModal();
+    }
+  </script>
+</body>
+</html>
